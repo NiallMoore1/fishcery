@@ -1,6 +1,8 @@
 <?php 
 
 
+try{
+
 //host
 define("HOST","http://localhost:8080");
 
@@ -14,15 +16,15 @@ define("USER","root");
 define("PASS","");
 
 $conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";",USER,PASS);
-//$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
- if($conn == true) {
-    echo "connected successfully";
+ //if($conn == true) {
+  //echo "connected successfully";
 
- } else{
-    echo"error";
- }
- 
-//}  catch (PDOException $e) {
-  //  echo $e->getmessage();
+ //} else{
+   // echo"error";
 //}
+ 
+ } catch (PDOException $e) {
+   echo $e->getMessage();
+}
