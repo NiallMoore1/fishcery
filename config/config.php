@@ -1,6 +1,10 @@
 <?php 
 
-
+if(!isset($_SERVER['HTTPS_REFERER'])){
+   //REDERECT THEM TO YOUR DESIRED LOCATION
+   header('location: http://localhost:8080/project01/fishcery/index.php');
+  exit;
+}
 try{
 
 //host
