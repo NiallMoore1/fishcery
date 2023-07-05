@@ -1,14 +1,14 @@
 <?php 
 
-if(!isset($_SERVER['HTTPS_REFERER'])){
-   //REDERECT THEM TO YOUR DESIRED LOCATION
-   header('location: http://localhost:8080/project01/fishcery/index.php');
-  exit;
-}
-try{
+//if(!isset($_SERVER['HTTPS_REFERER'])){
+    //REDERECT THEM TO YOUR DESIRED LOCATION
+  //  header('location: http://localhost:8080/project01/Freshcery/index.php');
+  // exit;
+//}
 
+try {
 //host
-define("HOST","http://localhost:8080");
+define("HOST","localhost");
 
 //dbname
 define("DBNAME","freshcery");
@@ -22,13 +22,12 @@ define("PASS","");
 $conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";",USER,PASS);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
- //if($conn == true) {
-  //echo "connected successfully";
+// if($conn == true) {
+//     echo "connected successfully";
 
- //} else{
-   // echo"error";
-//}
- 
- } catch (PDOException $e) {
-   echo $e->getMessage();
+// } else{
+//     echo"error";
+// }
+}  catch (PDOException $e) {
+    echo $e->getmessage();
 }
