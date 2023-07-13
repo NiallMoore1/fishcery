@@ -1,48 +1,64 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php"; ?>
-<?php
+<?php 
 
-    if(isset($_SESSION['username'])){
-        echo "<script> window.location.href='".APPURL."';</script>";
-    }
-    if(isset($_POST['submit'])) {
-        if( empty($_POST['email']) OR empty($_POST['password'])
-        ){
-            echo "<script>alert('one or more inputs are empty')</script>";
+if(isset($_SESSION['username'])) {
+    
+    echo "<script> window.location.href='".APPURL."'; </script>";
+
+}
+
+if(isset($_POST['submit'])) {
+
+    if(empty($_POST['email']) OR empty($_POST['password'])
+    ) {
+
+        echo "<script>alert('one or more inputs are empty')</script>";
+
+    } else {
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        //query
+
+        $login = $conn->query("SELECT * FROM users WHERE email='$email'");
+        $login->execute();
+
+        $fetch = $login->fetch(PDO::FETCH_ASSOC);
+
+        //validate email
+
+        if($login->rowCount() > 0) {
+
+           //validate pass
+
+           if(password_verify($password, $fetch['mypassword'])) {
+
+             $_SESSION['username'] = $fetch['username'];
+             $_SESSION['email'] = $fetch['email'];
+             $_SESSION['user_id'] = $fetch['id'];
+             $_SESSION['image'] = $fetch['image'];
+
+             echo "<script> window.location.href='".APPURL."'; </script>";
+
+           } else {
+            
+            echo "<script>alert('email or password is wrong')</script>";
+
+           }
+
         } else {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            //query
-
-            $login = $conn->query("SELECT * FROM users WHERE email='$email'");
-            $login->execute();
-
-            $fetch = $login->fetch(PDO::FETCH_ASSOC);
-
-            //validate email
-
-            if($login->rowcount() > 0) {
-                //validate password
-
-                if(password_verify($password, $fetch['mypassword'])){
-                    $_SESSION['username'] = $fetch['username'];
-                    $_SESSION['email'] = $fetch['email'];
-                    $_SESSION['user_id'] = $fetch['id'];
-                    $_SESSION['image'] = $fetch['image'];
-
-                    echo "<script>window.location.href='".APPURL."';</script>";
-                } else {
-                    echo "<script>alert('email or password is wrong')</script>";
-                }
-            } else {
-                echo "<script>alert('email or password is wrong')</script>";
-            }
+            echo "<script>alert('email or password is wrong')</script>";
 
         }
+
     }
+}
+
+
 ?>
-    <div id="page-content" class="page-content">
+  <div id="page-content" class="page-content">
         <div class="banner">
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/bg-header.jpg');">
                 <div class="container">
@@ -87,5 +103,4 @@
             </div>
         </div>
     </div>
-  
-    <?php require "../includes/footer.php"; ?>
+<?php require "../includes/footer.php"; ?>  
