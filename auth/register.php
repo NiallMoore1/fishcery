@@ -31,7 +31,7 @@
 
               // header("location: login.php");
 
-              echo "<script> window.location.href='auth/login.php';</script>";
+              echo "<script> window.location.href='login.php';</script>";
                
             } else {
                 echo "<script>alert('password does not match111');</script>";
