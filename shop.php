@@ -37,7 +37,7 @@
                     <!-- Navbar Menu -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="shop.html" class="nav-link active">Shop</a>
+                            <a href="shop.php" class="nav-link active">Shop</a>
                         </li>
                         <li class="nav-item">
                             <a href="register.html" class="nav-link">Register</a>
@@ -149,7 +149,7 @@
                 <div class="col-md-12">
                     <div class="shop-categories owl-carousel mt-5">
                         <div class="item">
-                            <a href="shop.html">
+                            <a href="shop.php">
                                 <div class="media d-flex align-items-center justify-content-center">
                                     <span class="d-flex mr-2"><i class="sb-bistro-carrot"></i></span>
                                     <div class="media-body">
@@ -160,7 +160,7 @@
                             </a>
                         </div>
                         <div class="item">
-                            <a href="shop.html">
+                            <a href="shop.php">
                                 <div class="media d-flex align-items-center justify-content-center">
                                     <span class="d-flex mr-2"><i class="sb-bistro-apple"></i></span>
                                     <div class="media-body">
@@ -171,7 +171,7 @@
                             </a>
                         </div>
                         <div class="item">
-                            <a href="shop.html">
+                            <a href="shop.php">
                                 <div class="media d-flex align-items-center justify-content-center">
                                     <span class="d-flex mr-2"><i class="sb-bistro-roast-leg"></i></span>
                                     <div class="media-body">
@@ -182,7 +182,7 @@
                             </a>
                         </div>
                         <div class="item">
-                            <a href="shop.html">
+                            <a href="shop.php">
                                 <div class="media d-flex align-items-center justify-content-center">
                                     <span class="d-flex mr-2"><i class="sb-bistro-fish-1"></i></span>
                                     <div class="media-body">
@@ -193,7 +193,7 @@
                             </a>
                         </div>
                         <div class="item">
-                            <a href="shop.html">
+                            <a href="shop.php">
                                 <div class="media d-flex align-items-center justify-content-center">
                                     <span class="d-flex mr-2"><i class="sb-bistro-french-fries"></i></span>
                                     <div class="media-body">
@@ -204,7 +204,7 @@
                             </a>
                         </div>
                         <div class="item">
-                            <a href="shop.html">
+                            <a href="shop.php">
                                 <div class="media d-flex align-items-center justify-content-center">
                                     <span class="d-flex mr-2"><i class="sb-bistro-appetizer"></i></span>
                                     <div class="media-body">

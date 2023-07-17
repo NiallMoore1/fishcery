@@ -1,10 +1,10 @@
 <?php 
 
-//if(!isset($_SERVER['HTTPS_REFERER'])){
+if(!isset($_SERVER['HTTPS_REFERER'])){
     //REDERECT THEM TO YOUR DESIRED LOCATION
-  //  header('location: http://localhost:8080/project01/Freshcery/index.php');
-  // exit;
-//}
+    header('location: http://localhost:8080/project01/Freshcery/index.php');
+   exit;
+}
 
 try {
 //host
