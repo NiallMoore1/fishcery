@@ -35,7 +35,7 @@ $product = $select->fetch(PDO::FETCH_OBJ);
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="slider-zoom">
-                            <a href="<?php echo APPURL;?>/assets/img/meats.jpg" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
+                            <a href="<?php echo APPURL;?>/assets/img/<?php echo APPURL;?>" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
                                 <img alt="Detail Zoom thumbs image" src="<?php echo APPURL;?>/assets/img/meats.jpg" style="width: 100%;">
                             </a>
                         </div>
