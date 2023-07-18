@@ -43,15 +43,16 @@ $product = $select->fetch(PDO::FETCH_OBJ);
                     <div class="col-sm-6">
                         
                             <strong>Overview</strong>
-                            <?php echo $product->description; ?>
+                            
                             <!--cant add this line -->
                         
                         <div class="row">
                             <div class="col-sm-6">
                                 <p>
                                     <strong>Price</strong> (/Pack)<br>
-                                    <span class="price">Rp 100.000</span>
-                                    <span class="old-price">Rp 150.000</span>
+                                    <span class="price">€ <?php echo $Product->price;?></span>
+                                    <!--cant add to this line -->
+                                    <!--<span class="old-price">Rp 150.000</span> -->
                                 </p>
                             </div>
                            
