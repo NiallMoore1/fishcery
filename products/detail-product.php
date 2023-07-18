@@ -1,10 +1,25 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php";  ?>
 
+<?php
+
+if(isset($_GET['id'])) {
+
+$id = $_GET['id'];
+
+$select = $conn->query("SELECT * FROM products WHERE status = 1 AND id='$id'");
+$select->execute();
+
+$product = $select->fetch(PDO::FETCH_OBJ);
+} else {
+
+}
+
+?>
 
     <div id="page-content" class="page-content">
         <div class="banner">
-            <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('assets/img/bg-header.jpg');">
+            <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL;?>/assets/img/bg-header.jpg');">
                 <div class="container">
                     <h1 class="pt-5">
                         The Meat Product Title
@@ -20,8 +35,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="slider-zoom">
-                            <a href="assets/img/meats.jpg" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
-                                <img alt="Detail Zoom thumbs image" src="assets/img/meats.jpg" style="width: 100%;">
+                            <a href="<?php echo APPURL;?>/assets/img/meats.jpg" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
+                                <img alt="Detail Zoom thumbs image" src="<?php echo APPURL;?>/assets/img/meats.jpg" style="width: 100%;">
                             </a>
                         </div>
                     </div>
