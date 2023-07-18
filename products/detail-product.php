@@ -50,7 +50,7 @@ $product = $select->fetch(PDO::FETCH_OBJ);
                             <div class="col-sm-6">
                                 <p>
                                     <strong>Price</strong> (/Pack)<br>
-                                    <span class="price">€ <?php echo $Product->price;?></span>
+                                    <span class="price">€ <?php echo $product->price;?></span>
                                     <!--cant add to this line -->
                                     <!--<span class="old-price">Rp 150.000</span> -->
                                 </p>
