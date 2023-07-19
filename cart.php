@@ -245,7 +245,7 @@
                    
                         <div class="clearfix"></div>
                         <h6 class="mt-3">Total: Rp 180.000</h6>
-                        <a href="checkout.html" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="checkout.php" class="btn btn-lg btn-primary">Checkout <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
