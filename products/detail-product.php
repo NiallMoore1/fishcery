@@ -2,6 +2,30 @@
 <?php require "../config/config.php";  ?>
 
 <?php
+
+if(isset($_POST['submit'])) {
+
+    $pro_id = $_POST['pro_id'];
+    $pro_title = $_POST['pro_title'];
+    $pro_image = $_POST['pro_image'];
+    $pro_price = $_POST['pro_price'];
+    $pro_qty = $_POST['pro_qty'];
+    $user_id = $_POST['user_id'];
+
+    $insert = $conn->prepare("INSERT INTO cart (pro_id, pro_title, pro_image, pro_price,
+    pro_qty, user_id) VALUES (:pro_id, :pro_title, :pro_image, :pro_price, :pro_qty, :user_id)");
+
+    $insert->execute([
+        ':pro_id' => $pro_id,
+        ':pro_title' => $pro_title,
+        ':pro_image' => $pro_image,
+        ':pro_price' => $pro_price,
+        ':pro_qty' => $pro_qty,
+        ':user_id' => $user_id,
+    ]);
+
+
+}
   if(isset($_GET['id'])) {
 
     $id = $_GET['id'];
@@ -33,7 +57,7 @@
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL;?>/assets/img/bg-header.jpg');">
                 <div class="container">
                     <h1 class="pt-5">
-                        The Meat Product Title
+                    <?php echo $product->title; ?>
                     </h1>
                     <p class="lead">
                         Save time and leave the groceries to us.
@@ -70,18 +94,46 @@
                            
                         </div>
                         <p class="mb-1">
-                            <strong>Quantity</strong>
+                        <strong>Quantity</strong>
                         </p>
-                        <div class="row">
+                        <form method="POST" id="form-data">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text" name="pro_title" value="<?php echo $product->title; ?>" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text"  name="pro_image" value="<?php echo $product->image; ?>" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input class="pro_price form-control" type="text" name="pro_price" value="<?php echo $product->price; ?>" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text"  name="user_id" value="<?php echo $_SESSION['user_id']; ?>" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text" name="pro_id" value="<?php echo $product->id; ?>" >
+                                </div>
+                            </div>
+                            <div class="row">
                             <div class="col-sm-5">
-                                <input class="form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->quantity; ?>" name="vertical-spin">
+                                <input class="form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->quantity; ?>" name="pro_qty">
                             </div>
                             <div class="col-sm-6"><span class="pt-1 d-inline-block">Pack (1000 gram)</span></div>
-                        </div>
+                            </div>
 
-                        <button class="mt-3 btn btn-primary btn-lg">
-                            <i class="fa fa-shopping-basket"></i> Add to Cart
-                        </button>
+                            <button name ="submit" type ="submit"  class="btn-insert mt-3 btn btn-primary btn-lg">
+                                <i class="fa fa-shopping-basket"></i> Add to Cart
+                            </button>
+                                    
+                        </form>
                     </div>
                 </div>
             </div>
@@ -110,7 +162,7 @@
                                                 20% OFF
                                             </span>
                                         </div>
-                                        <img src="assets/img/<?php echo $products->image;?>" alt="Card image 2" class="card-img-top">
+                                        <img src="<?php echo APPURL; ?>/assets/img/<?php echo $products->image;?>" alt="Card image 2" class="card-img-top">
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -139,11 +191,34 @@
     
     <script>
         $(document).ready(function() {
+
             $(".form-control").keyup(function(){
                 var value = $(this).val();
                 value = value.replace(/^(0*)/,"");
                 $(this).val(1);
             });
 
+            $(".btn-insert").on("click", function(e) {
+                e.preventDefault();
+
+                var form_data = $("#form-data").serialize()+'&submit=submit';
+
+                $.ajax({
+                    url: "detail-product.php?id=<?php echo $id; ?>",
+                    method: "POST",
+                    data: form_data,
+
+                    success: function(){
+                        alert("product added to cart");
+                        
+                    }
+
+            })
+
         })
-    </script>
+
+    })
+
+
+        
+</script>
