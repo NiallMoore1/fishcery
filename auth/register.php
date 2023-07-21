@@ -1,49 +1,59 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php"; ?>
+<?php 
 
-<?php
+    if(isset($_SESSION['username'])) {
+        
+        echo "<script> window.location.href='".APPURL."'; </script>";
 
-    if(isset($_SESSION['username'])){
-       echo "<script>window.location.href='".APPURL."';</script>";
     }
+    
     if(isset($_POST['submit'])) {
-        if(empty($_POST['fullname']) OR empty($_POST['email']) OR empty($_POST['password']) Or empty($_POST['username'])){
-            echo "<script>alert('one or more inputs are empty');</script>";
+
+        if(empty($_POST['fullname']) OR empty($_POST['email']) OR empty($_POST['password'])
+        OR empty($_POST['username'])) {
+
+            echo "<script>alert('one or more inputs are empty')</script>";
+
         } else {
 
-            if($_POST['password'] == $_POST['confirm_password']){
+            if($_POST['password'] == $_POST['confirm_password']) {
+
                 $fullname = $_POST['fullname'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 $username = $_POST['username'];
                 $image = "user.png";
 
-                $insert = $conn->prepare("INSERT INTO users (fullname,email,username,mypassword,image)
-               VALUES(:fullname, :email, :username, :mypassword, :image )");
+                $insert = $conn->prepare("INSERT INTO users(fullname, email, username, mypassword, image)
+                VALUES(:fullname, :email, :username, :mypassword, :image)");
 
-               $insert->execute([
-                ":fullname" => $fullname,
-                ":email" => $email,
-                ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
-                ":username" => $username,
-                ":image" => $image
-               ]);
+                $insert->execute([
+                    ":fullname" => $fullname,
+                    ":email" => $email,
+                    ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
+                    ":username" => $username,
+                    ":image" => $image
+                ]);
 
-              // header("location: login.php");
 
-              echo "<script> window.location.href='login.php';</script>";
-               
+               // header("Location: login.php");
+
+               echo "<script> window.location.href='login.php'; </script>";
+
             } else {
-                echo "<script>alert('password does not match111');</script>";
+                echo "<script>alert('password does not match, write correct password');</script>";
+
             }
-           
 
+          
 
-    
         }
     }
 
 ?>
+
+
     <div id="page-content" class="page-content">
         <div class="banner">
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/bg-header.jpg');">
@@ -57,7 +67,7 @@
 
                     <div class="card card-login mb-5">
                         <div class="card-body">
-                            <form class="form-horizontal"method="POST" action="register.php">
+                            <form class="form-horizontal" method="POST" action="register.php">
                                 <div class="form-group row mt-3">
                                     <div class="col-md-12">
                                         <input class="form-control" name="fullname" type="text" required="" placeholder="Full Name">
@@ -81,11 +91,11 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
-                                        <input class="form-control"name="confirm_password" type="password" required="" placeholder="Confirm Password">
+                                        <input class="form-control" name="confirm_password" type="password" required="" placeholder="Confirm Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <!--<div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="checkbox">
                                             <input id="checkbox0" type="checkbox" name="terms">
                                             <label for="checkbox0" class="mb-0">I Agree with <a href="terms.html" class="text-light">Terms & Conditions</a> </label>
@@ -104,4 +114,5 @@
             </div>
         </div>
     </div>
-   <?php require "../includes/footer.php"; ?>
+<?php require "../includes/footer.php"; ?>
+

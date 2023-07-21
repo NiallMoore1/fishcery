@@ -58,7 +58,8 @@ if(isset($_POST['submit'])) {
 
 
 ?>
-  <div id="page-content" class="page-content">
+
+    <div id="page-content" class="page-content">
         <div class="banner">
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/bg-header.jpg');">
                 <div class="container">
@@ -103,4 +104,4 @@ if(isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-<?php require "../includes/footer.php"; ?>  
+<?php require "../includes/footer.php"; ?>

@@ -46,6 +46,13 @@ if(isset($_POST['submit'])) {
 
     // var_dump($allRelatedProducts);
 
+    //validating cart products
+    if(isset($_SESSION['user_id'])) {
+
+        $validate = $conn->query("SELECT * FROM cart WHERE pro_id='$id' AND user_id='$_SESSION[user_id]'");
+        $validate->execute();
+   }
+
 
     } else {
     
@@ -99,40 +106,46 @@ if(isset($_POST['submit'])) {
                         <form method="POST" id="form-data">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text" name="pro_title" value="<?php echo $product->title; ?>" >
+                                    <input class="form-control" type="hidden" name="pro_title" value="<?php echo $product->title; ?>" >
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text"  name="pro_image" value="<?php echo $product->image; ?>" >
+                                    <input class="form-control" type="hidden" name="pro_image" value="<?php echo $product->image; ?>" >
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input class="pro_price form-control" type="text" name="pro_price" value="<?php echo $product->price; ?>" >
+                                    <input class="pro_price form-control" type="hidden" name="pro_price" value="<?php echo $product->price; ?>" >
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text"  name="user_id" value="<?php echo $_SESSION['user_id']; ?>" >
+                                    <input class="form-control" type="hidden"  name="user_id" value="<?php echo $_SESSION['user_id']; ?>" >
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text" name="pro_id" value="<?php echo $product->id; ?>" >
+                                    <input class="form-control" type="hidden" name="pro_id" value="<?php echo $product->id; ?>" >
                                 </div>
                             </div>
                             <div class="row">
-                            <div class="col-sm-5">
-                                <input class="form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->quantity; ?>" name="pro_qty">
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="number" min="1" data-bts-button-down-class="btn btn-primary" data-bts-button-up-class="btn btn-primary" value="<?php echo $product->quantity; ?>" name="pro_qty">
+                                </div>
                             </div>
-                            <div class="col-sm-6"><span class="pt-1 d-inline-block">Pack (1000 gram)</span></div>
+                            <div class="col-sm-6"><span class="pt-1 d-inline-block">Pack (1000 gram)</span>
                             </div>
-
-                            <button name ="submit" type ="submit"  class="btn-insert mt-3 btn btn-primary btn-lg">
-                                <i class="fa fa-shopping-basket"></i> Add to Cart
-                            </button>
+                            <?php if($validate->rowCount() > 0) : ?>
+                                    <button  name="submit" type="submit" class="btn-insert mt-3 btn btn-primary btn-lg" disabled>
+                                        <i class="fa fa-shopping-basket"></i> Added to Cart
+                                    </button>
                                     
+                            <?php else : ?>
+                                <button name ="submit" type ="submit"  class="btn-insert mt-3 btn btn-primary btn-lg">
+                                    <i class="fa fa-shopping-basket"></i> Add to Cart
+                            </button>
+                           <?php endif; ?>         
                         </form>
                     </div>
                 </div>
@@ -210,7 +223,8 @@ if(isset($_POST['submit'])) {
 
                     success: function(){
                         alert("product added to cart");
-                        
+                        $(".btn-insert").html("<i class='fa fa-shopping-basket'></i> Added to Cart").prop("disabled", true);
+                        withRef();
                     }
 
             })
