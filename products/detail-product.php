@@ -59,6 +59,7 @@ if(isset($_POST['submit'])) {
     }
 ?>
 
+
     <div id="page-content" class="page-content">
         <div class="banner">
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL;?>/assets/img/bg-header.jpg');">
@@ -136,16 +137,22 @@ if(isset($_POST['submit'])) {
                             </div>
                             <div class="col-sm-6"><span class="pt-1 d-inline-block">Pack (1000 gram)</span>
                             </div>
-                            <?php if($validate->rowCount() > 0) : ?>
+                            <?php if (isset($_SESSION['username'])) : ?>
+                                <?php if($validate->rowCount() > 0) : ?>
                                     <button  name="submit" type="submit" class="btn-insert mt-3 btn btn-primary btn-lg" disabled>
-                                        <i class="fa fa-shopping-basket"></i> Added to Cart
-                                    </button>
-                                    
-                            <?php else : ?>
-                                <button name ="submit" type ="submit"  class="btn-insert mt-3 btn btn-primary btn-lg">
-                                    <i class="fa fa-shopping-basket"></i> Add to Cart
-                            </button>
-                           <?php endif; ?>         
+                                            <i class="fa fa-shopping-basket"></i> Added to Cart
+                                        </button> 
+                                            
+                                    <?php else : ?>
+                                        <button name ="submit" type ="submit"  class="btn-insert mt-3 btn btn-primary btn-lg">
+                                            <i class="fa fa-shopping-basket"></i> Add to Cart
+                                        </button>
+                                    <?php endif; ?>
+                            <?php else: ?> 
+                                <div class="mt-5 alert alert-success bg-success text-white text-center">
+                                        log in to buy this product or add it to the cart 
+                                 </div>   
+                                 <?php endif; ?>     
                         </form>
                     </div>
                 </div>
@@ -201,6 +208,7 @@ if(isset($_POST['submit'])) {
     </div>
 
     <?php require "../includes/footer.php" ;?>
+    
     
     <script>
         $(document).ready(function() {
