@@ -4,14 +4,15 @@
     session_start();
     define("APPURL", "http://localhost:8080/project01/freshcery");
 
+    require dirname(dirname(__FILE__)) . "/config/config.php";
 
     
     //if(isset($_SESSION['user_id'])) {
-      //  $cart = $conn->query("SELECT COUNT(*) as num_products FROM cart WHERE user_id='$_SESSION[user_id]'");
-        //$cart->execute();
+        $cart = $conn->query("SELECT COUNT(*) as num_products FROM cart WHERE user_id='$_SESSION[user_id]'");
+        $cart->execute();
     
-        //$num = $cart->fetch(PDO::FETCH_OBJ);
-    //}
+        $num = $cart->fetch(PDO::FETCH_OBJ);
+   // }
 ?>
 
 

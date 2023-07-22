@@ -7,17 +7,17 @@
 //}
 
 try {
-//host
-define("HOST","localhost");
+  //host
+  if (!defined('HOST')) define("HOST", "localhost");
 
-//dbname
-define("DBNAME","freshcery");
+  //dbname
+  if (!defined('DBNAME')) define("DBNAME", "freshcery");
 
-//user
-define("USER","root");
+  //user
+  if (!defined('USER')) define("USER", "root");
 
-//pass
-define("PASS","");
+  //pass
+  if (!defined('PASS')) define("PASS", "");
 
 $conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";",USER,PASS);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

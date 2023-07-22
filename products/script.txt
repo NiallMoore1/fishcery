@@ -1,0 +1,59 @@
+ $(".pro_amount").mouseup(function () {
+                  
+                  var $el = $(this).closest('tr');
+
+        
+
+                  var pro_amount = $el.find(".pro_amount").val();
+                  var pro_price = $el.find(".pro_price").html();
+
+                  var total = pro_amount * pro_price;
+                  $el.find(".total_price").html("");        
+
+                  $el.find(".total_price").append(total+'$');
+
+                  $(".btn-update").on('click', function(e) {
+
+                      var id = $(this).val();
+                    
+
+                      $.ajax({
+                        type: "POST",
+                        url: "update-item.php",
+                        data: {
+                          update: "update",
+                          id: id,
+                          pro_amount: pro_amount
+                        },
+
+                        success: function() {
+                         // alert("done");
+                          //reload();
+                        }
+                      })
+                    });
+                 
+                
+           fetch();     
+      });
+
+
+
+//Script part two 
+
+$(".pro_qty").mouseup(function () {
+                  
+                 
+
+                var $el = $(this).closest('form');
+
+
+                  var pro_qty = $el.find(".pro_qty").val();
+                  var pro_price = $el.find(".pro_price").val();
+                    
+                  var subtotal = pro_qty * pro_price;
+                  alert(subtotal);
+                  $el.find(".subtotal_price").val("");        
+
+                  $el.find(".subtotal_price").val(subtotal);
+            })
