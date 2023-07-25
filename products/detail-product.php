@@ -4,7 +4,7 @@
 <?php
     if(!isset($_SESSION['username'])) {
         
-        echo "<script> window.location.href='".APPURL."'; </script>";
+        echo "<script> window.location.href='".APPURL."404.php'; </script>";
     
     }
     
@@ -62,7 +62,7 @@ if(isset($_POST['submit'])) {
 
 
     } else {
-    
+        echo "<script> window.location.href='".APPURL."/404.php'; </script>";
     }
 ?>
 
