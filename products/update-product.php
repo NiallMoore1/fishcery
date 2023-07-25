@@ -1,14 +1,21 @@
-<?php require "includes/header.php"; ?>
-<?php require "config/config.php";  ?>
+<?
+if(!isset($_SERVER['HTTPS_REFERER'])){
+    //REDERECT THEM TO YOUR DESIRED LOCATION
+    header('location: http://localhost:8080/project01/Freshcery/index.php');
+   exit;
+}
+?>
+<?php require "../includes/header.php"; ?>
+<?php require "../config/config.php";  ?>
 
 <?php  
 
+    if(!isset($_SESSION['username'])) {
+        
+    echo "<script> window.location.href='".APPURL."'; </script>";
 
-    //if(!isset($_SESSION['username'])) {
-                
-       // echo "<script> window.location.href='".APPURL."'; </script>";
+    }
 
-    //}
 
     if(isset($_POST['update'])) {
         

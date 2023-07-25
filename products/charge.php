@@ -1,6 +1,21 @@
+<?php
+//if(!isset($_SERVER['HTTPS_REFERER'])){
+    //REDERECT THEM TO YOUR DESIRED LOCATION
+   // header('location: http://localhost:8080/project01/Freshcery/index.php');
+ //  exit;
+//}
+?>
 <?php require "../includes/header.php"; ?>
+<?php
+    if(!isset($_SESSION['username'])) {
+        
+        echo "<script> window.location.href='".APPURL."'; </script>";
+    
+    }
+?>
 
 
+    
 
         <div class="banner">
             <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('<?php echo APPURL; ?>/assets/img/bg-header.jpg');">
