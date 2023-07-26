@@ -3,46 +3,46 @@
 <?php 
 
 
-  if(!isset($_SESSION['adminname'])) {
-          
-    echo "<script> window.location.href='".ADMINURL."/admins/login-admins.php'; </script>";
-
-  }
-  if(isset($_POST['submit'])) {
-
-    if(empty($_POST['email']) OR empty($_POST['password'])
-    OR empty($_POST['adminname'])) {
-
-        echo "<script>alert('one or more inputs are empty')</script>";
-
-    } else {
-
-       
-
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $adminname = $_POST['adminname'];
-
-            $insert = $conn->prepare("INSERT INTO admins(email, adminname, mypassword)
-            VALUES(:email, :adminname, :mypassword)");
-
-            $insert->execute([
-                ":email" => $email,
-                ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
-                ":adminname" => $adminname,
-            ]);
-
-
-          // header("Location: login.php");
-
-          echo "<script> window.location.href='".ADMINURL."/admins/admins.php'; </script>";
-
-       
-
-      
+    if(!isset($_SESSION['adminname'])) {
+            
+      echo "<script> window.location.href='".ADMINURL."/admins/login-admins.php'; </script>";
 
     }
-  }
+    if(isset($_POST['submit'])) {
+
+      if(empty($_POST['email']) OR empty($_POST['password'])
+      OR empty($_POST['adminname'])) {
+
+          echo "<script>alert('one or more inputs are empty')</script>";
+
+      } else {
+
+        
+
+              $email = $_POST['email'];
+              $password = $_POST['password'];
+              $adminname = $_POST['adminname'];
+
+              $insert = $conn->prepare("INSERT INTO admins(email, adminname, mypassword)
+              VALUES(:email, :adminname, :mypassword)");
+
+              $insert->execute([
+                  ":email" => $email,
+                  ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
+                  ":adminname" => $adminname,
+              ]);
+
+
+            // header("Location: login.php");
+
+            echo "<script> window.location.href='".ADMINURL."/admins/admins.php'; </script>";
+
+        
+
+        
+
+      }
+    }
 
 
 
