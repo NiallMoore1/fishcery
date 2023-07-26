@@ -62,7 +62,7 @@ if(!isset($_SESSION['username'])) {
                                     <?php foreach($allProducts as $product):?>
                                     <tr>
                                         <td>
-                                            <img src="<?php echo APPURL ;?>/assets/img/<?php echo $product->pro_image;?>" width="60">
+                                        <img src="<?php echo IMGURLPRODUCT; ?>/<?php echo $product->pro_image;?>" width="60">
                                         </td>
                                         <td>
                                         <?php echo $product->pro_title;?><br>

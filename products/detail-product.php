@@ -2,11 +2,11 @@
 <?php require "../config/config.php";  ?>
 
 <?php
-    if(!isset($_SESSION['username'])) {
+   // if(!isset($_SESSION['username'])) {
         
-        echo "<script> window.location.href='".APPURL."404.php'; </script>";
+       // echo "<script> window.location.href='".APPURL."404.php'; </script>";
     
-    }
+   // }
     
 if(isset($_POST['submit'])) {
 
@@ -86,7 +86,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-sm-6">
                         <div class="slider-zoom">
                             <a href="<?php echo APPURL;?>/assets/img/<?php echo $product->image; ?>" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: false, zoomWidth:'500', zoomHeight:'500', adjustY:0, adjustX:10" id="cloudZoom">
-                                <img alt="Detail Zoom thumbs image" src="<?php echo APPURL;?>/assets/img/<?php echo $product->image; ?>" style="width: 100%;">
+                                <img alt="Detail Zoom thumbs image" src="<?php echo IMGURLPRODUCT; ?>/<?php echo $product->image; ?>" style="width: 100%;">
                             </a>
                         </div>
                     </div>

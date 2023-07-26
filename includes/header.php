@@ -4,6 +4,9 @@
     session_start();
     define("APPURL", "http://localhost:8080/project01/freshcery");
 
+    define("IMGURLCATEGORY","http://localhost:8080/project01/freshcery/admin-panel/categories-admins/img_category/");
+    define("IMGURLPRODUCT","http://localhost:8080/project01/freshcery/admin-panel/products-admins/img_product/");
+
     require dirname(dirname(__FILE__)) . "/config/config.php";
 
     

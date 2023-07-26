@@ -6,7 +6,7 @@
                     
         echo "<script> window.location.href='".APPURL."'; </script>";
 
-    }
+   }
 
    
 
@@ -14,11 +14,11 @@
         $id = $_GET['id'];
 
 
-        if($id !== $_SESSION['user_id']) {
+       //if($id !== $_SESSION['user_id']) {
                     
-            echo "<script> window.location.href='".APPURL."'; </script>";
+           // echo "<script> window.location.href='".APPURL."'; </script>";
     
-        }
+       // }
     
 
         $select = $conn->query("SELECT * FROM orders WHERE user_id='$id'");
