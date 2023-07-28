@@ -1,7 +1,7 @@
 <?php 
 
   session_start();
-  define("ADMINURL", "http://localhost:8080/project01/freshcery/admin-panel");
+  define("ADMINURL", "http://niallmoore.ie/freshcery/admin-panel");
 
 ?>
 

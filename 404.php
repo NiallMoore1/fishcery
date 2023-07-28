@@ -1,7 +1,7 @@
 <?
 if(!isset($_SERVER['HTTPS_REFERER'])){
     //REDERECT THEM TO YOUR DESIRED LOCATION
-    header('location: http://localhost:8080/project01/Freshcery/index.php');
+    header('location: http://niallmoore.ie/Freshcery/index.php');
    exit;
 }
 ?>
